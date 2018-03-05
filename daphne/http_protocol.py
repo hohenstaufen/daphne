@@ -141,6 +141,7 @@ class WebRequest(http.Request):
                             self.root_path = unquote(value.decode("ascii"))
                         else:
                             self.clean_headers.append((name.lower(), value))
+                print(self.clean_headers)
                 logger.debug("HTTP %s request for %s", self.method, self.client_addr)
                 self.content.seek(0, 0)
                 # Work out the application scope and create application
@@ -157,11 +158,13 @@ class WebRequest(http.Request):
                     "client": self.client_addr,
                     "server": self.server_addr,
                 })
+                body = self.content.read()
+                print(body)
                 # Run application against request
                 self.application_queue.put_nowait(
                     {
                         "type": "http.request",
-                        "body": self.content.read(),
+                        "body": body,
                     },
                 )
         except Exception:
