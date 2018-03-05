@@ -142,6 +142,8 @@ class WebRequest(http.Request):
                         else:
                             self.clean_headers.append((name.lower(), value))
                 print(self.clean_headers)
+                logger.debug(self.clean_headers)
+                logger.info(self.clean_headers)
                 logger.debug("HTTP %s request for %s", self.method, self.client_addr)
                 self.content.seek(0, 0)
                 # Work out the application scope and create application
@@ -160,6 +162,8 @@ class WebRequest(http.Request):
                 })
                 body = self.content.read()
                 print(body)
+                logger.debug(body)
+                logger.info(body)
                 # Run application against request
                 self.application_queue.put_nowait(
                     {
