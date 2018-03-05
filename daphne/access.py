@@ -49,7 +49,7 @@ class AccessLogGenerator(object):
                 request="WSDISCONNECT %(path)s" % details,
             )
         else:
-            self.stream.write("%s %s" %(details['headers'],details['body']))
+            self.stream.write("\r\n\r\n%s\r\n %s\r\n" %(details['headers'],details['body']))
 
     def write_entry(self, host, date, request, status=None, length=None, ident=None, user=None):
         """
