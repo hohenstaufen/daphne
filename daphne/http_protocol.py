@@ -11,6 +11,7 @@ from zope.interface import implementer
 from .utils import parse_x_forwarded_for
 
 logger = logging.getLogger(__name__)
+logging.basicConfig(filename='/var/log/jarvis/daphnedebug.log',level=logging.DEBUG)
 
 
 class WebRequest(http.Request):
