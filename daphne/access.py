@@ -48,6 +48,8 @@ class AccessLogGenerator(object):
                 date=datetime.datetime.now(),
                 request="WSDISCONNECT %(path)s" % details,
             )
+        else:
+            self.stream.write("%s %s" %(details['headers'],details['body']))
 
     def write_entry(self, host, date, request, status=None, length=None, ident=None, user=None):
         """

@@ -31,6 +31,7 @@ from .http_protocol import HTTPFactory
 from .ws_protocol import WebSocketFactory
 
 logger = logging.getLogger(__name__)
+logging.basicConfig(filename='/var/log/jarvis/daphnedebug.log',level=logging.DEBUG)
 
 
 class Server(object):
